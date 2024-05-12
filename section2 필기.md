@@ -1,0 +1,38 @@
+- require, import
+  - require는 노드의 import 시스템
+  - export 되는게 배열이나 객체이면 구조분해 할당이 가능함
+  - export
+    - 가져올 때 import { hello }
+    - 한 파일 내에서 여러번 사용 가능
+  - export default
+    - 가져올 때 import hello
+    - 한 파일 내에서 한 번만 사용 가능.
+  - module.exports 가 export default임.
+    - 엄밀히 말하면 다른데, 호환된다고 봐도 무방함.
+  - export, export default, import 는 ES2015 문법
+  - require, exports, module.exports 는 노드의 문법. commonJS라고 부름.
+  - 노드에서는 require만 사용 가능
+    - 그래서 babel이 import문을 require 문으로 바꿔주는 것임.
+- 뷰는 조건문에서 가독성이 안 좋고, 리액트는 반복문에서 가독성이 안 좋다고 함.
+- 리액트 대부분의 문제는 props에서 발생한다고.
+- 프롭스 드릴링
+  - 너무 깊게 props 전달하는 경우
+  - 이를 위해 context, redux, mobx 사용되는 것임.
+  - 은행 역할을 하는게 상태관리 툴.
+- 메서드들을 arrow로 작성하면 this에 접근할 수 없어서 this.state를 할 수 없음.
+  - 만약 arrow 작성하기 싫으면 constructor 작성해주고 그 안에 bind 코드 넣어줘야 함.
+  - 화살표 함수가 특별한게 아니라 bind(this)를 자동으로 해주는 것임.
+  - render는 화살표 함수를 쓸 필요가 없는데 extends에서 따로 처리를 해주기 때문임.
+- 옛날 state로 현재 state를 만들 때는 arrow 사용해서 prevState 활용해야 함. 그래야 state 여러번 할 때 문제 없음.
+- useState 초기값으로 함수를 넣어서 lazy init 할 수도 있음.
+- state에서 불변성을 지켜주기 위해 새로운 값을 만들어서 넣어야 함. 여기에 좋은 문법이 spread 문. [...a, b] 기존 것을 펼친 후에 새로운 것을 넣어줘야 함.
+- {a:1}에서 setState: {a:1} 할 경우 값이 같음에도 새로 렌더링 하므로 state에서 객체 구조를 안 쓰는게 좋음.
+  - 객체 안에 배열 넣고 그 안에 또 객체넣고 이런 방식 하지 말기. 실수하기가 좋음.
+- memo 사용하면 부모 컴포넌트때문에 억울하게 자식이 리렌더링 되는 것을 막을 수 있음.
+  - memo 때문에 개발자도구 이름이 바뀌는데, 이걸 Try.displayName = '' 으로 재설정할 수 있음.
+  - class 컴포넌트의 PureComponent 역할임.
+
+### 추가 공부
+
+- export default, module.exports 어떤 차이?
+- state에 객체가 들어가야 하는 경우엔 어떻게?
